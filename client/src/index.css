@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-main: var(--bg-main);
+  --color-bg-sidebar: var(--bg-sidebar);
+  --color-bg-editor: var(--bg-editor);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-secondary-accent: var(--secondary-accent);
+  --color-border-color: var(--border);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+:root {
+  /* Rose Light Theme */
+  --bg-main: #fff1f2;
+  --bg-sidebar: #ffe4e6;
+  --bg-editor: #ffffff;
+  --accent: #ec4899;
+  --accent-hover: #e11d48;
+  --secondary-accent: #fecdd3;
+  --border: #fecdd3;
+  --text-primary: #4c0519;
+  --text-secondary: #be185d;
+  --success: #059669;
+  --error: #e11d48;
+}
+
+.dark {
+  /* Modern Dark Theme from Stitch */
+  --bg-main: #0D1117;
+  --bg-sidebar: #161B22;
+  --bg-editor: #0D1117;
+  --accent: #3B82F6;
+  --accent-hover: #60A5FA;
+  --secondary-accent: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.08);
+  --text-primary: #e5e2e2;
+  --text-secondary: #8f9095;
+  --success: #3FB950;
+  --error: #ffb4ab;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar for modern feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-accent);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+.glass-panel {
+  background-color: var(--bg-main);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(225, 29, 72, 0.1);
+}
+
+.dark .glass-panel {
+  background-color: var(--bg-sidebar);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.glass-overlay {
+  background-color: rgba(22, 27, 34, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
