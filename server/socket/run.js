@@ -47,8 +47,8 @@ export default function initRunSocket(io) {
 
         socket.emit('output', { type: 'system', data: 'Compiling...\n' });
         
-        // Use c++14 for wider compatibility with older MinGW versions locally
-        const compiler = spawn('g++', ["-std=c++14", "-O2", sourcePath, "-o", binaryPath]);
+        // Use c++14, completely remove -O2 optimization to drastically speed up compile times
+        const compiler = spawn('g++', ["-std=c++14", sourcePath, "-o", binaryPath]);
         
         let compileError = '';
         compiler.stderr.on('data', (chunk) => { compileError += chunk.toString(); });
