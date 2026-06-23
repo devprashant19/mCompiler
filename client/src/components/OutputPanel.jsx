@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import useStore from '../store/useStore.js';
 
 export default function OutputPanel() {
@@ -11,8 +11,10 @@ export default function OutputPanel() {
 
   useEffect(() => {
     if (isRight) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSize(window.innerWidth * 0.4);
     } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSize(250);
     }
   }, [isRight]);

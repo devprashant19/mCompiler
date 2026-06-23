@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Sidebar from './components/Sidebar.jsx';
 import ActivityBar from './components/ActivityBar.jsx';
 import EditorArea from './components/EditorArea.jsx';
@@ -7,7 +7,7 @@ import TopBar from './components/TopBar.jsx';
 import useStore from './store/useStore.js';
 
 function App() {
-  const { theme, outputPosition, sidebarWidth, setSidebarWidth } = useStore();
+  const { theme, outputPosition, setSidebarWidth } = useStore();
   const isResizing = useRef(false);
 
   useEffect(() => {

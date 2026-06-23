@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Editor from '@monaco-editor/react';
 import useStore from '../store/useStore.js';
 
@@ -11,8 +11,10 @@ export default function EditorArea() {
 
   useEffect(() => {
     if (activeFile) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setContent(activeFile.content || '');
     } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setContent('');
     }
   }, [activeFileId]);

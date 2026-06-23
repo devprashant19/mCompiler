@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useStore from '../store/useStore.js';
 
 export default function TopBar() {
-  const { theme, setTheme, runCode, activeFileId, nodes, isRunning, stdin } = useStore();
+  const { theme, setTheme, runCode, activeFileId, nodes, isRunning } = useStore();
   const [showMotivation, setShowMotivation] = useState(false);
   
   const toggleTheme = () => {
