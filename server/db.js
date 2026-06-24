@@ -1,24 +1,13 @@
-import Database from 'better-sqlite3';
-import path from 'path';
+import 'dotenv/config';
+import { createClient } from '@supabase/supabase-js';
 
-const dbPath = process.env.DB_PATH || path.resolve('./mansi.db');
-const db = new Database(dbPath, { verbose: console.log });
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
 
-// Initialize database schema
-db.pragma('journal_mode = WAL');
-db.pragma('foreign_keys = ON');
+if (!supabaseUrl || !supabaseKey) {
+  throw new Error("Missing SUPABASE_URL or SUPABASE_KEY in environment variables.");
+}
 
-db.exec(`
-  CREATE TABLE IF NOT EXISTS nodes (
-    id TEXT PRIMARY KEY,
-    name TEXT NOT NULL,
-    type TEXT CHECK( type IN ('file', 'folder') ) NOT NULL,
-    parent_id TEXT,
-    content TEXT DEFAULT '',
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY(parent_id) REFERENCES nodes(id) ON DELETE CASCADE
-  )
-`);
+const supabase = createClient(supabaseUrl, supabaseKey);
 
-export default db;
+export default supabase;
