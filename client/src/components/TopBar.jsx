@@ -19,7 +19,7 @@ export default function TopBar() {
 
   const handleMotivationClick = () => {
     setShowMotivation(true);
-    const audio = new Audio('/motivation.mp3');
+    const audio = new Audio('/motivation.m4a');
     audio.play().catch(err => console.log("Audio play failed, likely due to browser autoplay policies:", err));
   };
 
