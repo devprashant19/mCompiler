@@ -17,6 +17,12 @@ export default function TopBar() {
     }
   };
 
+  const handleMotivationClick = () => {
+    setShowMotivation(true);
+    const audio = new Audio('/motivation.mp3');
+    audio.play().catch(err => console.log("Audio play failed, likely due to browser autoplay policies:", err));
+  };
+
   return (
     <>
       <header className="flex items-center px-4 w-full h-12 shrink-0 z-50 bg-bgMain/80 backdrop-blur-xl border-b border-borderColor shadow-sm relative">
@@ -42,7 +48,7 @@ export default function TopBar() {
 
         <div className="absolute right-4 flex items-center gap-2">
           <button 
-            onClick={() => setShowMotivation(true)}
+            onClick={handleMotivationClick}
             className="flex items-center gap-1.5 px-4 py-1.5 rounded-md bg-gradient-to-r from-[#e11d48] to-[#be123c] text-white text-[15px] font-medium hover:opacity-90 active:scale-95 duration-200 transition-all shadow-md shadow-[#e11d48]/20 cursor-pointer"
           >
             <span className="material-symbols-outlined !text-[18px] text-white" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
