@@ -4,6 +4,7 @@ import useStore from '../store/useStore.js';
 export default function TopBar() {
   const { theme, setTheme, runCode, activeFileId, nodes, isRunning } = useStore();
   const [showMotivation, setShowMotivation] = useState(false);
+  const [showCuties, setShowCuties] = useState(false);
   
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
@@ -48,6 +49,13 @@ export default function TopBar() {
 
         <div className="absolute right-4 flex items-center gap-2">
           <button 
+            onClick={() => setShowCuties(true)}
+            className="flex items-center gap-1.5 px-4 py-1.5 rounded-md bg-gradient-to-r from-pink-200 to-pink-300 text-pink-900 text-[15px] font-bold hover:opacity-90 active:scale-95 duration-200 transition-all shadow-md shadow-pink-300/30 cursor-pointer border border-pink-400/20"
+          >
+            <span className="material-symbols-outlined !text-[18px] text-pink-600" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
+            Cuties
+          </button>
+          <button 
             onClick={handleMotivationClick}
             className="flex items-center gap-1.5 px-4 py-1.5 rounded-md bg-gradient-to-r from-[#e11d48] to-[#be123c] text-white text-[15px] font-medium hover:opacity-90 active:scale-95 duration-200 transition-all shadow-md shadow-[#e11d48]/20 cursor-pointer"
           >
@@ -68,6 +76,22 @@ export default function TopBar() {
             </div>
             <p className="text-xl font-bold text-white tracking-wide">I love u kuttu 🤗</p>
             <p className="text-md text-white/90 leading-relaxed font-medium">You are doing great.<br/>I am proud of you 😙💖</p>
+          </div>
+        </div>
+      )}
+
+      {showCuties && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md p-4" onClick={() => setShowCuties(false)}>
+          <div className="relative bg-black rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 w-[95vw] h-[95vh] max-w-6xl max-h-[90vh] flex items-center justify-center border border-pink-400/30" onClick={e => e.stopPropagation()}>
+            <button onClick={() => setShowCuties(false)} className="absolute top-4 right-4 z-10 p-2 text-white/70 hover:text-white cursor-pointer rounded-full transition-colors bg-black/50 hover:bg-black/80">
+              <span className="material-symbols-outlined !text-[24px]">close</span>
+            </button>
+            <video 
+              src="/us.mp4" 
+              autoPlay 
+              controls 
+              className="w-full h-full object-contain"
+            />
           </div>
         </div>
       )}
